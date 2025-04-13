@@ -6,78 +6,69 @@ include C:\masm32\include\kernel32.inc
 includelib C:\masm32\lib\kernel32.lib
 
 
-;-----------------------------------
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-;old notation
-;_TEXT SEGMENT
-;start:
-
-;end start
-;_TEXT ends
-;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-;------------------------------------
-
-comment~
-.const ; This announcement is not mandatory
-	;FPS equ 1000
-	FPS 	= 1000 ; only the simplest numerical value is declared in this way
-	FLAG1 	= 1
-	FLAG2 	= 2
-	FLAG3 	= 1 + 2
 
 .data
-	numberA	dd	10
-	numberB	dd	11
-	
-	
-.data?
-	hInstance	dd	?
-~
-
-.data
-	buffer	dq	0
-			dq	0
+	StackBottom		dd	0h
+					dd	0h
+					dd	0h
+					dd	0h
+	StackTop		dd	0h
+	StackPointer	dd	offset StackTop
 
 .code
 start:
+
+comment~	
+	mov ebp,StackPointer
 	
-	;mov al,87h
-	;mov ah,56h
-	;mov ax,5678h
-	;mov eax,12345678h
-	;----------
-	;mov cl,87h
-	;mov ch,56h
-	;mov cx,5678h
-	;mov ecx,12345678h
-	;----------
-	;mov dl,87h
-	;mov dh,56h
-	;mov dx,5678h
-	;mov edx,12345678h
 	;---------
-	;mov bl,87h
-	;mov bh,56h
-	;mov bx,5678h
-	;mov ebx,12345678h
+	;Push a value in stack
 	;---------
 	
-	mov eax,614D5341h
-	mov ecx,72657473h
-	mov edx,00002179h
+	sub ebp,4
+	mov dword ptr[ebp],1
 	;---------
-	mov dword ptr[buffer],eax
-	mov dword ptr[buffer+4],ecx
-	mov dword ptr[buffer+8],edx
+	sub ebp,4
+	mov dword ptr[ebp],2
 	;---------
-	mov esi,offset buffer
+	sub ebp,4
+	mov dword ptr[ebp],3
 	;---------
-	mov eax,dword ptr[buffer]
-	mov dx,word ptr[buffer+4]
-	mov cl,byte ptr[buffer+6]
+	sub ebp,4
+	mov dword ptr[ebp],4
 	;---------
-	movzx eax,byte ptr[buffer]
-	movsx edx,byte ptr[buffer+1]
+	
+	;---------
+	;Pop a value from stack
+	;---------
+	
+	mov eax,dword ptr[ebp]
+	add ebp,4
+	;---------
+	mov ecx,dword ptr[ebp]
+	add ebp,4
+	;---------
+	mov edx,dword ptr[ebp]
+	add ebp,4
+	;---------
+	mov ebx,dword ptr[ebp]
+	add ebp,4
+	;---------
+~
+	
+	push 4
+	push 3
+	push 2
+	push 1
+	;---------
+	pop eax
+	pop ecx
+	pop edx
+	pop ebx
+	;---------
+	
+	
+	
 	;---------
 	push 1000
 	;---------
