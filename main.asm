@@ -14,6 +14,9 @@ includelib C:\masm32\lib\kernel32.lib
 					dd	0h
 	StackTop		dd	0h
 	StackPointer	dd	offset StackTop
+	
+	number1			dd	0h
+	number2			dd	1h
 
 .code
 start:
@@ -54,7 +57,6 @@ comment~
 	mov ebx,dword ptr[ebp]
 	add ebp,4
 	;---------
-~
 	
 	push 4
 	push 3
@@ -66,7 +68,20 @@ comment~
 	pop edx
 	pop ebx
 	;---------
-	
+~
+
+	push 2
+	push 1
+	;---------
+	pop number1
+	pop number2
+	;---------
+	push number2
+	push number1
+	;---------
+	pop number2
+	pop number1
+	;---------
 	
 	
 	;---------
