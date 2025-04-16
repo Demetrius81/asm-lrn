@@ -41,7 +41,7 @@ get_comp_info proc
 	;---------------
 	call GetUserName
 	;---------------
-	printf("Computer Info: %s\n\n", esi)
+	printf("Computer Info: %s\n\n", esi) 
 	;---------------
 	
 	pop edi
