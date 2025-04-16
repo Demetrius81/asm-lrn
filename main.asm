@@ -14,7 +14,7 @@ main proc
 	printf("+          Buffer Overflow          +\n")
 	printf("+++++++++++++++++++++++++++++++++++++\n\n")
 	;---------
-	call exploit
+	call exploit2
 	;---------
 	inkey
 	
