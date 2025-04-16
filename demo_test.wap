@@ -22,4 +22,4 @@ DebOut=
 [FILES]
 1=main.asm
 2=main.inc
-3=exploit.inc
+3=functions.inc

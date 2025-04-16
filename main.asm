@@ -11,10 +11,10 @@ start:
 main proc
 
 	printf("+++++++++++++++++++++++++++++++++++++\n")
-	printf("+          Buffer Overflow          +\n")
+	printf("+         Get Computer Info         +\n")
 	printf("+++++++++++++++++++++++++++++++++++++\n\n")
 	;---------
-	call exploit2
+	call get_comp_info
 	;---------
 	inkey
 	
