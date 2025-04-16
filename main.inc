@@ -1,14 +1,8 @@
-.model flat, stdcall
-option casemap:none
+include C:\masm32\include\masm32rt.inc
+
 ;===================================
-include C:\masm32\include\kernel32.inc
-includelib C:\masm32\lib\kernel32.lib
-;===================================
-include functions.inc
+;			Modules
 ;===================================
 
-	FPS	=	1000
-	
-;===================================
+include exploit.inc
 
-.data

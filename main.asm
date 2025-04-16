@@ -1,4 +1,3 @@
-.686
 include main.inc
 
 .code
@@ -11,25 +10,15 @@ start:
 ;=======================================
 main proc
 
-	;sub esp,8					;ccall
-	;mov dword ptr[esp+4],8		;ccall
-	;mov dword ptr[esp],7		;ccall
-	;call addNumbersCCall		;ccall
-	;add esp,8					;ccall
+	printf("+++++++++++++++++++++++++++++++++++++\n")
+	printf("+          Buffer Overflow          +\n")
+	printf("+++++++++++++++++++++++++++++++++++++\n\n")
 	;---------
-	push 8
-	push 7
-	;push FPS
+	call exploit
 	;---------
-	call addNumbersFC
-	;---------
-	push FPS
-	;---------
-	call Sleep
-	;---------
-	push 0
-	;---------
-	mov eax,0
+	inkey
+	
+	xor eax,eax
 
 	ret
 main endp
